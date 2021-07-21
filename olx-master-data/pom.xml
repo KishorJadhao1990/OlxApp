@@ -12,7 +12,7 @@
     <artifactId>olx-master-data</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>olx-master-data</name>
-    <description>Spring Boot OLX master data service</description>
+    <description>Spring Boot Olx Master Data Service</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -54,5 +54,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

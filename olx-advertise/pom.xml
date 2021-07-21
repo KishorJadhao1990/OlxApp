@@ -12,7 +12,7 @@
     <artifactId>olx-advertise</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>olx-advertise</name>
-    <description>olx advertise app</description>
+    <description>Spring Boot Olx Advertise Service</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -60,5 +60,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
