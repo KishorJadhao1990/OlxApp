@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: olx-login
+#---------------------------------
+# Database Connection
+#---------------------------------
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/olxapp
+#    url: jdbc:postgresql://eoa.crhgnntu2vz9.us-east-2.rds.amazonaws.com:5432/olxapp
+  jpa:
+    show-sql: true
+
+#---------------------------------
+# Mongo Db Connection
+#---------------------------------
+#  data:
+#    mongodb:
+#      host:
+#      database:
+#      password:
+#      username:
+
+#---------------------------------
+# Application logging strategy
+#---------------------------------
+logging:
+  level:
+    com:
+      zensar: debug
+    org:
+      springframework: warn
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
+#---------------------------------
+jwt:
+  secret:
+    key: ShVmYq3t6w9z$C&F)J@McQfTjWnZr4u7
+
+#---------------------------------
+management:
+  endpoints:
+    web:
+      exposure:
+        include: beans, caches, conditions, env,
+                 health, metrics, loggers, mappings,
+                 sessions, logfile, heapdump
+#---------------------------------

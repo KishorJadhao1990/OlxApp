@@ -1,0 +1,33 @@
+#---------------------------------
+# Application Info
+#---------------------------------
+server:
+  port: 8081
+spring:
+  application:
+    name: olx-advertise
+#---------------------------------
+# Database Connection
+#---------------------------------
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/olxapp
+#    url: jdbc:postgresql://eoa.crhgnntu2vz9.us-east-2.rds.amazonaws.com:5432/olxapp
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: on
+#---------------------------------
+# Application logging strategy
+#---------------------------------
+logging:
+  level:
+    com:
+      zensar: debug
+    org:
+      springframework: warn
+#---------------------------------
+

@@ -1,0 +1,35 @@
+#---------------------------------
+# Application Info
+#---------------------------------
+server:
+  port: 8082
+spring:
+  application:
+    name: olx-master-data
+#---------------------------------
+# Database Connection
+#---------------------------------
+# RDBMS
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/olxapp
+# MONGO
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: olxdb
+  main:
+    allow-bean-definition-overriding: true
+#---------------------------------
+# Application logging strategy
+#---------------------------------
+logging:
+  level:
+    com:
+      zensar: debug
+    org:
+      springframework: debug
+#---------------------------------
