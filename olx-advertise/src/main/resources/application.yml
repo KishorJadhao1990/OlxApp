@@ -1,8 +1,3 @@
-#---------------------------------
-# Application Info
-#---------------------------------
-server:
-  port: 8081
 spring:
   application:
     name: olx-advertise
@@ -14,14 +9,10 @@ spring:
     username: postgres
     password: postgres
     url: jdbc:postgresql://localhost:5432/olxapp
-#    url: jdbc:postgresql://eoa.crhgnntu2vz9.us-east-2.rds.amazonaws.com:5432/olxapp
-
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    show-sql: on
+  jpa:
+    show-sql: true
 #---------------------------------
-# Application logging strategy
+# Application Logging Strategy
 #---------------------------------
 logging:
   level:
@@ -29,5 +20,20 @@ logging:
       zensar: debug
     org:
       springframework: warn
+#---------------------------------
+# Eureka Client Configuration
+#---------------------------------
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}
+#---------------------------------
+# Misc Configuration
+#---------------------------------
+server:
+  port: 8081
 #---------------------------------
 

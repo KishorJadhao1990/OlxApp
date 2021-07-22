@@ -46,7 +46,7 @@
         </dependencies>
     </dependencyManagement>
 
-    <!--  Plugins  -->
+    <!-- Plugins and Build management -->
     <build>
         <plugins>
             <plugin>

@@ -1,8 +1,3 @@
-#---------------------------------
-# Application Info
-#---------------------------------
-server:
-  port: 8082
 spring:
   application:
     name: olx-master-data
@@ -24,7 +19,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
 #---------------------------------
-# Application logging strategy
+# Application Logging Strategy
 #---------------------------------
 logging:
   level:
@@ -33,3 +28,17 @@ logging:
     org:
       springframework: debug
 #---------------------------------
+# Eureka Client Configuration
+#---------------------------------
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}
+#---------------------------------
+# Misc Configuration
+#---------------------------------
+server:
+  port: 8082
