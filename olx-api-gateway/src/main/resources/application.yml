@@ -26,6 +26,9 @@ eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}
 #---------------------------------
 # Misc Configuration
 #---------------------------------
