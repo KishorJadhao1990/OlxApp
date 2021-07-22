@@ -8,15 +8,18 @@
         <version>2.5.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.zensar</groupId>
     <artifactId>olx-eureka-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>olx-eureka-server</name>
     <description>Spring Boot Olx Eureka Registry Service</description>
+    
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>2020.0.3</spring-cloud.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -29,6 +32,8 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <!--  Dependency Management  -->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -41,6 +46,7 @@
         </dependencies>
     </dependencyManagement>
 
+    <!--  Plugins  -->
     <build>
         <plugins>
             <plugin>
