@@ -5,11 +5,11 @@ spring:
 # Database Connection
 #---------------------------------
 # RDBMS
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: postgres
-    url: jdbc:postgresql://localhost:5432/olxapp
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    username: postgres
+#    password: postgres
+#    url: jdbc:postgresql://localhost:5432/olxapp
 # MONGO
   data:
     mongodb:
