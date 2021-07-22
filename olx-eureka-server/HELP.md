@@ -10,6 +10,7 @@
   if `localhost:8761/eureka/` not working.
 ```
 `2. Service Endpoints:`
-```
-localhost:8761 OR localhost:8761/eureka/
-```
+
+[http://localhost:8761](http://localhost:8761) OR 
+[http://localhost:8761/eureka/](http://localhost:8761/eureka/)
+
