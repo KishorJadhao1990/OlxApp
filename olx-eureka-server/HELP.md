@@ -9,3 +9,7 @@
 - Access registry server use url `localhost:8761` 
   if `localhost:8761/eureka/` not working.
 ```
+`2. Service Endpoints:`
+```
+localhost:8761 OR localhost:8761/eureka/
+```

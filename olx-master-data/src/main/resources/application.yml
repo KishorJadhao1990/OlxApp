@@ -28,6 +28,14 @@ logging:
     org:
       springframework: debug
 #---------------------------------
+# Actuator Endpoint Management
+#---------------------------------
+management:
+  endpoints:
+    web:
+      exposure:
+        include : "*"
+#---------------------------------
 # Eureka Client Configuration
 #---------------------------------
 eureka:

@@ -1,4 +1,4 @@
-- Spring security:
+###### Spring boot security: ######
 ```
 1. Basic Authentication:
 - Username and password based on auth.
@@ -22,4 +22,10 @@
 - For any request authToken is must.
 - Token validated with auth server. 
 - Once validated request get processed by Resource Server.
+```
+###### Service Utility Endpoints: ######
+```
+1. Actuators:
+- http://host:port/actuator
+- http://host:port/actuator/refresh
 ```
