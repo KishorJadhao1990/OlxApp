@@ -31,10 +31,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: beans, caches, conditions, env,
-                 health, metrics, loggers, mappings,
-                 sessions, logfile, heapdump
-#        include : "*"
+        include : "*"
 #---------------------------------
 # Eureka Client Configuration
 #---------------------------------
