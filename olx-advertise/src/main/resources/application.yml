@@ -19,7 +19,7 @@ logging:
     com:
       zensar: debug
     org:
-      springframework: warn
+      springframework: debug
 #---------------------------------
 # Eureka Client Configuration
 #---------------------------------

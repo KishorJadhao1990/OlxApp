@@ -1,5 +1,6 @@
 package com.zensar.configuration;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ public class ApplicationConfiguration {
     }
 
     @Bean
+    @LoadBalanced
     public RestTemplate getRestTemplate() {
         return new RestTemplate();
     }
