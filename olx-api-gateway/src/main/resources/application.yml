@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: olx-api-gateway
+#---------------------------------
+# Cloud Gateway Routing
+#---------------------------------
+  cloud:
+    gateway:
+      routes:
+        - id: olx-login
+          uri: lb://olx-login
+          predicates:
+            - Path=/api/users/**
+        - id: olx-advertise
+          uri: lb://olx-advertise
+          predicates:
+            - Path=/api/advertise/**
+        - id: olx-master-data
+          uri: lb://olx-master-data
+          predicates:
+            - Path=/api/category/**
+#---------------------------------
+# Eureka Client Configuration
+#---------------------------------
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+#---------------------------------
+# Misc Configuration
+#---------------------------------
+server:
+  port: 8080
+

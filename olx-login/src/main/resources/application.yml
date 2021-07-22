@@ -52,5 +52,5 @@ jwt:
   secret:
     key: ShVmYq3t6w9z$C&F)J@McQfTjWnZr4u7
 server:
-  port: 8080
+  port: 8081
 #---------------------------------

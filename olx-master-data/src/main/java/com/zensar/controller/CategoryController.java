@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/advertise")
+@RequestMapping("/api/category")
 public class CategoryController {
 
     @Autowired
@@ -28,13 +28,13 @@ public class CategoryController {
     @Autowired
     private LoginServiceHelper loginServiceHelper;
 
-    @GetMapping("/category")
+    @GetMapping("/")
     public List<Category> fetchAllAdvertiseCategory(WebRequest webRequest) {
         loginServiceHelper.authenticateUser(webRequest);
         return categoryService.fetchAllAdvertiseCategory();
     }
 
-    @GetMapping("/category/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Category> fetchAdvertiseCategory(@PathVariable Long id, WebRequest webRequest) {
         loginServiceHelper.authenticateUser(webRequest);
         Optional<Category> categoryOpt = categoryService.fetchAdvertiseCategory(id);
@@ -42,7 +42,7 @@ public class CategoryController {
         return new ResponseEntity<>(categoryOpt.get(), HttpStatus.OK);
     }
 
-    @GetMapping("/category/status")
+    @GetMapping("/status")
     public ResponseEntity<Map> findAdvertiseCategoryStatuses(WebRequest webRequest) {
         loginServiceHelper.authenticateUser(webRequest);
         Map<Long, String> resultMap = (Map<Long, String>) categoryService.findAdvertiseCategoryStatuses();
