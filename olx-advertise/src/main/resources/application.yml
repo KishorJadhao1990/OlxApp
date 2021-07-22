@@ -2,6 +2,11 @@ spring:
   application:
     name: olx-advertise
 #---------------------------------
+# Cloud Configuration
+#---------------------------------
+  config:
+    import: configserver:http://localhost:8888
+#---------------------------------
 # Database Connection
 #---------------------------------
 #  datasource:
@@ -19,7 +24,7 @@ logging:
     com:
       zensar: debug
     org:
-      springframework: debug
+      springframework: warn
 #---------------------------------
 # Actuator Endpoint Management
 #---------------------------------
@@ -43,5 +48,3 @@ eureka:
 #---------------------------------
 server:
   port: 8082
-#---------------------------------
-

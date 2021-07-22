@@ -1,7 +1,9 @@
+spring:
+  application:
+    name: olx-config-server
 #---------------------------------
 # Git Access For Cloud Config
 #---------------------------------
-spring:
   cloud:
     config:
       server:
@@ -9,4 +11,9 @@ spring:
           uri: https://github.com/KishorJadhao1990/OlxAppConfigs.git
           username: KishorJadhao1990
           password: Kishor@1990
+          clone-on-start: true
+#---------------------------------
+# Misc Configuration
+server:
+  port: 8888
 #---------------------------------
