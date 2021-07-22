@@ -24,21 +24,9 @@
 - Once validated request get processed by Resource Server.
 ```
 ###### Service Utility Endpoints: ######
-1. Actuators:
 - `All included actuators:`
-  [http://host:port/actuator](http://host:port/actuator)
+  [http://{server-ip}:{server-port}/actuator](http://{server-ip}:{server-port}/actuator)
 - `Refresh Config:`
-  [http://host:port/actuator/refresh](http://host:port/actuator/refresh)
+  [http://{server-ip}:{server-port}/actuator/refresh](http://{server-ip}:{server-port}/actuator/refresh)
 - `Check Config:`
-  [http://host:port/actuator/configprops](http://host:port//actuator/configprops)
-  
-
-
-
-
-
-
-
-
-
-
+  [http://{server-ip}:{server-port}/actuator/configprops](http://{server-ip}:{server-port}/actuator/configprops)
