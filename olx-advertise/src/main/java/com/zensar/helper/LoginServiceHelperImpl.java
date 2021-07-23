@@ -6,17 +6,18 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.request.WebRequest;
 
 @Slf4j
-@Service
-public class LoginServiceHelper {
+@Component
+public class LoginServiceHelperImpl implements LoginServiceHelper {
 
     @Autowired
     private RestTemplate restTemplate;
 
+    @Override
     @CircuitBreaker(name = "authenticate-user", fallbackMethod = "fallbackForAuthenticateUser")
     public User authenticateUser(WebRequest webRequest) {
         String token = webRequest.getHeader("Authorization");
@@ -26,7 +27,21 @@ public class LoginServiceHelper {
         return response.getBody();
     }
 
-    public User fallbackForAuthenticateUser (WebRequest token, Throwable throwable) throws Throwable {
+    @Override
+    @CircuitBreaker(name = "authenticate-user", fallbackMethod = "fallbackForAuthenticateUser")
+    public User authenticateUser(String token) {
+        HttpEntity<String> entity = new HttpEntity<>(setAuthorizationHeader(token));
+        ResponseEntity<User> response = restTemplate
+                .exchange(EndpointConstants.LOGIN_VALIDATE.value(), HttpMethod.GET, entity, User.class);
+        return response.getBody();
+    }
+
+    public User fallbackForAuthenticateUser (String token, Throwable throwable) throws Throwable {
+        log.error("fallbackForAuthenticateUser message :{}", throwable.getMessage());
+        throw throwable;
+    }
+
+    public User fallbackForAuthenticateUser (WebRequest webRequest, Throwable throwable) throws Throwable {
         log.error("fallbackForAuthenticateUser message :{}", throwable.getMessage());
         throw throwable;
     }
@@ -37,4 +52,5 @@ public class LoginServiceHelper {
         headers.setContentType(MediaType.APPLICATION_JSON);
         return headers;
     }
+
 }

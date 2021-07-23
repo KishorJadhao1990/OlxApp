@@ -2,6 +2,11 @@ spring:
   application:
     name: olx-master-data
 #---------------------------------
+# Cloud Configuration
+#---------------------------------
+  config:
+    import: configserver:http://localhost:8888
+#---------------------------------
 # Database Connection
 #---------------------------------
 # RDBMS
@@ -26,7 +31,7 @@ logging:
     com:
       zensar: debug
     org:
-      springframework: debug
+      springframework: info
 #---------------------------------
 # Actuator Endpoint Management
 #---------------------------------
@@ -50,3 +55,18 @@ eureka:
 #---------------------------------
 server:
   port: 8083
+#---------------------------------
+# Circuit Breaker Configuration
+#---------------------------------
+resilience4j:
+  circuitbreaker:
+    instances:
+      authenticate-user:
+        registerHealthIndicator: true
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 5s
+
+#---------------------------------

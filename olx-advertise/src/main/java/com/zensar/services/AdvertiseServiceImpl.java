@@ -31,20 +31,20 @@ public class AdvertiseServiceImpl implements AdvertiseService {
     }
 
     @Override
-    public Optional<Advertise> saveNewAdvertise(Advertise advertise, User loggedInUser) {
+    public Optional<Advertise> saveNewAdvertise(Advertise advertise, User loggedInUser, String token) {
         advertise.setCCUU(loggedInUser.getId());
-        categoryServiceHelper.fetchCategory(advertise.getCategoryId());
+        categoryServiceHelper.fetchCategory(advertise.getCategoryId(), token);
         return Optional.of(advertiseRepository.save(advertise));
     }
 
     @Override
-    public Optional<Advertise> updateAdvertise(Advertise advertise, User loggedInUser) {
+    public Optional<Advertise> updateAdvertise(Advertise advertise, User loggedInUser, String token) {
         Optional<Advertise> advertiseOptional = advertiseRepository.findById(advertise.getId());
         Advertise dbAdvertise = advertiseOptional.orElseThrow(() -> new BadRequestException("error.advertiseNotFound"));
         dbAdvertise.setUU(loggedInUser.getId());
         dbAdvertise.setTitle(advertise.getTitle());
         dbAdvertise.setPrice(advertise.getPrice());
-        categoryServiceHelper.fetchCategory(advertise.getCategoryId());
+        categoryServiceHelper.fetchCategory(advertise.getCategoryId(), token);
         dbAdvertise.setCategoryId(advertise.getCategoryId());
         dbAdvertise.setDescription(advertise.getDescription());
 

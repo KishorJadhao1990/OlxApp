@@ -3,6 +3,7 @@ package com.zensar.controller;
 import com.zensar.dto.AdvertiseDto;
 import com.zensar.exception.BadRequestException;
 import com.zensar.helper.LoginServiceHelper;
+import com.zensar.helper.LoginServiceHelperImpl;
 import com.zensar.model.Advertise;
 import com.zensar.model.User;
 import com.zensar.services.AdvertiseService;
@@ -27,20 +28,20 @@ public class AdvertiseController {
     private LoginServiceHelper loginServiceHelper;
 
     @PostMapping(name = "/",consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Advertise> saveNewAdvertise(@Valid @RequestBody AdvertiseDto advertiseDto, WebRequest webRequest){
-        User loggedInUser = loginServiceHelper.authenticateUser(webRequest);
+    public ResponseEntity<Advertise> saveNewAdvertise(@Valid @RequestBody AdvertiseDto advertiseDto, @RequestHeader("Authorization") String authToken){
+        User loggedInUser = loginServiceHelper.authenticateUser(authToken);
         Advertise advertise = advertiseDto.buildAdvertiseModel();
-        Optional<Advertise> advertiseOpt = advertiseService.saveNewAdvertise(advertise, loggedInUser);
+        Optional<Advertise> advertiseOpt = advertiseService.saveNewAdvertise(advertise, loggedInUser, authToken);
         Advertise dbAdvertise = advertiseOpt.orElseThrow(()-> new BadRequestException("error.failedToSave"));
         return new ResponseEntity<>(dbAdvertise, HttpStatus.OK);
     }
 
     @PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Advertise> updateAdvertise(@Valid @RequestBody AdvertiseDto advertiseDto, @PathVariable Long id, WebRequest webRequest) {
-        User loggedInUser = loginServiceHelper.authenticateUser(webRequest);
+    public ResponseEntity<Advertise> updateAdvertise(@Valid @RequestBody AdvertiseDto advertiseDto, @PathVariable Long id, @RequestHeader("Authorization") String authToken) {
+        User loggedInUser = loginServiceHelper.authenticateUser(authToken);
         Advertise advertise = advertiseDto.buildAdvertiseModel();
         advertise.setId(id);
-        Optional<Advertise> advertiseOpt = advertiseService.updateAdvertise(advertise,loggedInUser);
+        Optional<Advertise> advertiseOpt = advertiseService.updateAdvertise(advertise, loggedInUser, authToken);
         Advertise dbAdvertise = advertiseOpt.orElseThrow(()-> new BadRequestException("error.failedToUpdate"));
         return new ResponseEntity<>(dbAdvertise, HttpStatus.OK);
     }

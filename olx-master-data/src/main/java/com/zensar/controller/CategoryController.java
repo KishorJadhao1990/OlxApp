@@ -28,7 +28,7 @@ public class CategoryController {
     @Autowired
     private LoginServiceHelper loginServiceHelper;
 
-    @GetMapping("/")
+    @GetMapping()
     public List<Category> fetchAllAdvertiseCategory(WebRequest webRequest) {
         loginServiceHelper.authenticateUser(webRequest);
         return categoryService.fetchAllAdvertiseCategory();
@@ -43,9 +43,9 @@ public class CategoryController {
     }
 
     @GetMapping("/status")
-    public ResponseEntity<Map> findAdvertiseCategoryStatuses(WebRequest webRequest) {
+    public ResponseEntity<Map<Long, String>> findAdvertiseCategoryStatuses(WebRequest webRequest) {
         loginServiceHelper.authenticateUser(webRequest);
-        Map<Long, String> resultMap = (Map<Long, String>) categoryService.findAdvertiseCategoryStatuses();
+        Map<Long, String> resultMap = categoryService.findAdvertiseCategoryStatuses();
         return new ResponseEntity<>(resultMap, HttpStatus.OK);
     }
 }

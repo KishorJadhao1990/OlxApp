@@ -7,8 +7,8 @@ public enum EndpointConstants {
     LOGIN_VALIDATE("http://OLX-API-GATEWAY/api/users/validate-token"),
 
     // Category Service Helper
-    FETCH_CATEGORY("http://OLX-API-GATEWAY/api/advertise/category/{id}");
-    // FETCH_CATEGORY("http://OLX-MASTER-DATA/api/advertise/category/{id}");
+    FETCH_CATEGORY("http://OLX-API-GATEWAY/api/category/{id}");
+    // FETCH_CATEGORY("http://OLX-MASTER-DATA/api/category/{id}");
 
     private String value;
     EndpointConstants (String value) {

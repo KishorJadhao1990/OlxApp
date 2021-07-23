@@ -10,6 +10,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -36,6 +38,20 @@ public class ApplicationExceptionAdvisor extends ResponseEntityExceptionHandler 
         return new ResponseEntity<>(errorResponse, HttpStatus.UNAUTHORIZED);
     }
 
+    @ExceptionHandler(HttpServerErrorException.ServiceUnavailable.class)
+    public ResponseEntity<Object> handleServiceUnavailable(HttpServerErrorException.ServiceUnavailable ex, WebRequest request) {
+        String errorCode = "error.serviceUnavailable";
+        ErrorResponse errorResponse = errorUtil.buildErrorResponseEntity(errorCode, HttpStatus.SERVICE_UNAVAILABLE, request.getLocale());
+        return new ResponseEntity<>(errorResponse, HttpStatus.SERVICE_UNAVAILABLE);
+    }
+
+    @ExceptionHandler(HttpClientErrorException.Forbidden.class)
+    public ResponseEntity<Object> handleAccessDenied(HttpClientErrorException.Forbidden ex, WebRequest request) {
+        String errorCode = "error.forbidden";
+        ErrorResponse errorResponse = errorUtil.buildErrorResponseEntity(errorCode, HttpStatus.FORBIDDEN, request.getLocale());
+        return new ResponseEntity<>(errorResponse, HttpStatus.FORBIDDEN);
+    }
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         final List<ValidationError> errors = new ArrayList<>();
@@ -47,7 +63,6 @@ public class ApplicationExceptionAdvisor extends ResponseEntityExceptionHandler 
         errorResponse.setErrorCode("error.fieldValidation");
         return new ResponseEntity<>(errorResponse, status);
     }
-
 
 }
 

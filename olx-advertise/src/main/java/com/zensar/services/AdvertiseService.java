@@ -12,7 +12,7 @@ public interface AdvertiseService {
 
     Optional<Advertise> fetchAdvertise(Long id);
     Page<Advertise> fetchAllAdvertise(Pageable pageable);
-    Optional<Advertise> saveNewAdvertise(Advertise advertise, User loggedInUser);
-    Optional<Advertise> updateAdvertise(Advertise advertise, User loggedInUser);
+    Optional<Advertise> saveNewAdvertise(Advertise advertise, User loggedInUser, String token);
+    Optional<Advertise> updateAdvertise(Advertise advertise, User loggedInUser, String token);
 
 }
