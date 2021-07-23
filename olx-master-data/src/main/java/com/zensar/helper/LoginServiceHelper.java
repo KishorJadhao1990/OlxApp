@@ -6,12 +6,12 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.request.WebRequest;
 
 @Slf4j
-@Service
+@Component
 public class LoginServiceHelper {
 
     @Autowired
@@ -26,7 +26,7 @@ public class LoginServiceHelper {
         return response.getBody();
     }
 
-    public User fallbackForAuthenticateUser (WebRequest token, Throwable throwable) throws Throwable {
+    public User fallbackForAuthenticateUser (WebRequest webRequest, Throwable throwable) throws Throwable {
         log.error("fallbackForAuthenticateUser message :{}", throwable.getMessage());
         throw throwable;
     }

@@ -1,9 +1,7 @@
 package com.zensar.helper;
 
 import com.zensar.constants.EndpointConstants;
-import com.zensar.exception.BadRequestException;
 import com.zensar.model.Category;
-import com.zensar.model.User;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
