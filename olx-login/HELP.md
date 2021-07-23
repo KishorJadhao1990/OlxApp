@@ -23,14 +23,14 @@
 - Token validated with auth server. 
 - Once validated request get processed by Resource Server.
 ```
-###### Service Utility Endpoints: ######
+###### Service Actuators Urls: ######
 ```
 - All included actuators:
-  http://{server-ip}:{server-port}/actuator
-- Refresh Config:
-  http://{server-ip}:{server-port}/actuator/refresh
+  {protocal}://{server-ip}:{server-port}/actuator
+- {protocal} Config:
+  {protocal}://{server-ip}:{server-port}/actuator/refresh
 - Check Config:
-  http://{server-ip}:{server-port}/actuator/configprops
+  {protocal}://{server-ip}:{server-port}/actuator/configprops
 ```
 
 ###### Logging and Tracing ######

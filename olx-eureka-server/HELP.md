@@ -11,6 +11,6 @@
 ```
 `2. Service Endpoints:`
 
-[http://localhost:8761](http://localhost:8761) OR 
-[http://localhost:8761/eureka/](http://localhost:8761/eureka/)
+>[`http://localhost:8761`](http://localhost:8761) OR 
+>[`http://localhost:8761/eureka/`](http://localhost:8761/eureka/)
 
