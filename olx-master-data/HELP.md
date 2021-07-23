@@ -1,5 +1,4 @@
 ###### Service Utility Endpoints: ######
-1. Actuators:
 - `All included actuators:`
   [http://{server-ip}:{server-port}/actuator](http://{server-ip}:{server-port}/actuator)
 - `Refresh Config:`
